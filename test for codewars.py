@@ -537,8 +537,45 @@
 # print(quicksum("BBC"))
 
 
-def mix(s1, s2):
-    return s1, s2
-print(mix("A aaaa bb c", "& aaa bbb c d"))    
+# from collections import Counter
+# def mix(s1, s2):
+#     c1 = Counter(s1)
+#     c2 = Counter(s2)
+#     cc1 = {}
+#     cc2 = {}
+#     for key in c1:
+#         if key.islower() and c1[key] > 1:
+#             cc1[key] = c1[key]
+#     for key in c2:
+#         if key.islower() and c2[key] > 1:
+#             cc2[key] = c2[key]
+#     sum = ''
+#     for key in cc1:
+#         if cc1[key] > cc2[key]:
+#             sum += '1:' + key * cc1[key] + '/'
+#         else:
+#             sum += '2:' + key * cc2[key]
+#     return sum
+# print(mix("A aaaa bb c", "& aaa bbb c d")) # "1:aaaa/2:bbb"
 
-# "2:nnnnn/1:aaaa/1:hhh/2:mmm/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss"
+
+from collections import Counter
+def mix(s1, s2):
+    c1 = Counter(s1)
+    c2 = Counter(s2)
+    cc1 = {}
+    cc2 = {}
+    for key in c1:
+        if key.islower() and c1[key] > 1:
+            cc1[key] = c1[key]
+    for key in c2:
+        if key.islower() and c2[key] > 1:
+            cc2[key] = c2[key]
+    sum = ''
+    for key in cc1:
+        if cc1[key] > cc2[key]:
+            sum += '1:' + key * cc1[key] + '/'
+        else:
+            sum += '2:' + key * cc2[key]
+    return sum
+print(mix("Are they here", "yes, they are here")) # '2:eeeee/2:yy/=:hh/=:rr'
