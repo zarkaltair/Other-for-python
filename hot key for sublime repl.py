@@ -1,0 +1,1 @@
+{"cmd": ["python", "-u", "$file_basename"], "cwd": "$file_path", "encoding": "utf8", "extend_env": {"PYTHONIOENCODING": "utf-8"}, "external_id": "python", "syntax": "Packages/Python/Python.tmLanguage", "type": "subprocess"}
