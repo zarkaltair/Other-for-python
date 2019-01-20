@@ -97,13 +97,13 @@
 #     else:
 #         return 'result should be positive'
 
-
 # print(greek_comparator('alpha', 'beta')
 
 
 # arr = [20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5]
 
 # from collections import Counter
+
 # def find_it(seq):
 #     c = Counter(seq)
 #     for key in c:
@@ -119,7 +119,6 @@
 # n = str(tuple(n))
 # nn = n.replace(',', '*')
 # print(eval(nn))
-
 
 
 # def persistence(n):
@@ -559,23 +558,178 @@
 # print(mix("A aaaa bb c", "& aaa bbb c d")) # "1:aaaa/2:bbb"
 
 
-from collections import Counter
-def mix(s1, s2):
-    c1 = Counter(s1)
-    c2 = Counter(s2)
-    cc1 = {}
-    cc2 = {}
-    for key in c1:
-        if key.islower() and c1[key] > 1:
-            cc1[key] = c1[key]
-    for key in c2:
-        if key.islower() and c2[key] > 1:
-            cc2[key] = c2[key]
-    sum = ''
-    for key in cc1:
-        if cc1[key] > cc2[key]:
-            sum += '1:' + key * cc1[key] + '/'
+# from collections import Counter
+# def mix(s1, s2):
+#     c1 = Counter(s1)
+#     c2 = Counter(s2)
+#     cc1 = {}
+#     cc2 = {}
+#     for key in c1:
+#         if key.islower() and c1[key] > 1:
+#             cc1[key] = c1[key]
+#     for key in c2:
+#         if key.islower() and c2[key] > 1:
+#             cc2[key] = c2[key]
+#     sum = ''
+#     for key in cc1:
+#         if cc1[key] > cc2[key]:
+#             sum += '1:' + key * cc1[key] + '/'
+#         else:
+#             sum += '2:' + key * cc2[key]
+#     return sum
+# print(mix("Are they here", "yes, they are here")) # '2:eeeee/2:yy/=:hh/=:rr'
+
+
+# def summation(num):
+#     return eval('+'.join([str(x) for x in range(1, num + 1)]))
+
+# print(summation(10))
+
+
+# def find_outlier(arr):
+#     odd = 0
+#     even = 0
+#     for i in arr:
+#         if i % 2 == 0:
+#             even += 1
+#         else:
+#             odd += 1
+#     if odd == 1:
+#         for i in arr:
+#             if i % 2 != 0:
+#                 return i
+#     elif even == 1:
+#         for i in arr:
+#             if i % 2 == 0:
+#                 return i
+
+
+# find_outlier([2, 4, 6, 8, 10, 3])
+
+
+# arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# arr1 = [8, 9]
+# length = len(arr1)
+# print(arr[-length:])
+
+
+def tick_toward(start, target):
+    if start == target:
+        return [start, target]
+    elif start[0] != target[0] and start[1] == target[1]:
+        y = target[0] - start[0]
+        arr = []
+        x = 0
+        if y >= 0:
+            while len(arr) < y + 1:
+                z = (start[0] + x, start[1])
+                arr.append(z)
+                x += 1
+            return arr
         else:
-            sum += '2:' + key * cc2[key]
-    return sum
-print(mix("Are they here", "yes, they are here")) # '2:eeeee/2:yy/=:hh/=:rr'
+            while x > y - 1:
+                z = (start[0] + x, start[1])
+                arr.append(z)
+                x -= 1
+            return arr
+    elif start[0] == target[0] and start[1] != target[1]:
+        y = target[1] - start[1]
+        arr = []
+        x = 0
+        if y >= 0:
+            while len(arr) < y + 1:
+                z = (start[0], start[1] + x)
+                arr.append(z)
+                x += 1
+            return arr
+        else:
+            while x > y - 1:
+                z = (start[0], start[1] + x)
+                arr.append(z)
+                x -= 1
+            return arr
+    else:
+        y1 = target[0] - start[0]
+        y2 = target[1] - start[1]
+        arr = []
+        x = 0
+        y = 0
+        if y1 == y2:
+            while y1 != x - 1:
+                z = (start[0] + x, start[1] + y)
+                x += 1
+                y += 1
+                arr.append(z)
+        elif y1 > y2:
+            while y2 != y:
+                z = (start[0] + x, start[1] + y)
+                x += 1
+                y += 1
+                arr.append(z)
+            while y1 != x - 1:
+                z = (start[0] + x, start[1] + y)
+                x += 1
+                arr.append(z)
+        else:
+            while y1 != x:
+                z = (start[0] + x, start[1] + y)
+                x += 1
+                y += 1
+                arr.append(z)
+            while y2 != y - 1:
+                z = (start[0] + x, start[1] + y)
+                y += 1
+                arr.append(z)
+        return arr
+
+# print(tick_toward((1, 1), (2, 2)))
+
+
+# arr = [int(x) for x in string if int(x) % 2 != 0]
+
+
+# def comp(a1, a2):
+#     if a1 is None or a2 is None:
+#         return False
+#     else:
+#         a3 = []
+#         for i in a2:
+#             a3.append(i ** 0.5)
+#         a1 = sorted(a1)
+#         print(a1)
+#         a3 = sorted(a3)
+#         print(a3)
+#         return a1 == a3
+
+# a1 = [30]
+# a2 = [901]
+# print(comp(a1, a2))
+
+
+# def camel_case(string):
+#     return string.title().replace(' ', '')
+
+# print(camel_case("test case"))
+
+
+# from itertools import combinations as comb
+
+
+# def choose_best_sum(t, k, ls):
+#     return max(sorted([sum(i) for i in comb(ls, k) if sum(i) <= t]), default=None)
+
+# xs = [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]
+# print(choose_best_sum(430, 8, xs))
+
+
+# def square_digits_sequence(n):
+#     arr = []
+#     while n not in arr:
+#         arr.append(n)
+#         n = eval('+'.join([str(int(i) ** 2) for i in str(n)]))
+#     arr.append(n)
+#     return len(arr)
+
+# print(square_digits_sequence(16))
+
+
