@@ -733,3 +733,8 @@ def tick_toward(start, target):
 # print(square_digits_sequence(16))
 
 
+# s = 'rn*LeaoloS'
+# new_s = ''
+# for i in range (0, len(s), 3):
+#     new_s = s[i: i + 3] + new_s
+# print(new_s[: -1])
