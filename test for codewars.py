@@ -733,3 +733,12 @@ def tick_toward(start, target):
 # print(square_digits_sequence(16))
 
 
+# st = '222'
+
+# arr = [int(i) for i in st]
+
+# arr1 = []
+
+# for i in range(len(st)):
+#     arr1.append(arr[i] ** i)
+# print(arr1)
