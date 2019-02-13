@@ -13,3 +13,7 @@ pyplot.hist(x, bins, alpha=0.5, label='x')
 pyplot.hist(y, bins, alpha=0.5, label='y')
 pyplot.legend(loc='upper right')
 pyplot.show()
+
+
+# example
+# https://jenyay.net/Programming/Bar
